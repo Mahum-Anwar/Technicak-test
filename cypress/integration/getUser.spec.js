@@ -9,9 +9,14 @@ import {
   } from '../support/api-headers';
   
 
+  //Test Get Functionality
+  // Creating the user for E2E testing
+
    describe("Get user testing ",()=>{
 
     let userId;
+
+
     it("should create user",()=>{
 
         cy.request(
@@ -118,6 +123,7 @@ import {
     });
   });
 
+  //Delete the user that created in this file
   it('should delete the user',()=>{
     cy.request({
      method:"Delete",

@@ -9,6 +9,9 @@ import {
   getHeaders
 } from '../support/api-headers';
 
+//Testing the create functionality.
+//This includes Negative cases also for Create user Functionality
+//Testing the Service with response recieved and using chai assertion for the response code validation
 
 describe("Testing Create functionality",() =>{
   let userIds=[];
@@ -29,6 +32,7 @@ it("should create user",()=>{
     })
   })
 
+
   it('should attempt to create a user with no body', () => {
     cy.request({
         method: 'POST',
@@ -46,6 +50,8 @@ it("should create user",()=>{
         });
     });
 });
+
+
 // Negative test case
 it('should attempt to create a user with invalid input', () => {
   cy.request({
@@ -64,7 +70,7 @@ it('should attempt to create a user with invalid input', () => {
       userIds[i]= response.body.data.id;
       i=i+1;
     })
-      // notice the response does not display a type error
+      // notice the response does not display a type of error
   });
 
 
@@ -84,7 +90,7 @@ it('should attempt to create a user with invalid type', () => {
 });
 
 // Negative test case
-//it shpuld noot allow and we have to put the 500 server error assertion 
+//it should not allow tto add script tag or any extra field 
 
 it('should attempt to create a user with extra data', () => {
   cy.request({
@@ -123,6 +129,7 @@ it('should stop creating with same email -- using auth argument', () => {
 })
 });
 
+//Delete so we cann use the define newUser function again
 
   it("should delete the created user",()=>{
     
