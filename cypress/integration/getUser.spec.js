@@ -9,7 +9,7 @@ import {
   } from '../support/api-headers';
   
 
-  //Test Get Functionality
+  //    GET Functionality
   // Creating the user for E2E testing
 
    describe("Get user testing ",()=>{
@@ -29,6 +29,7 @@ import {
             expect(response.body.code).to.be.eq(201);
             userId = response.body.data.id;
            })
+           cy.wait(10000)
         })
 
   it("should get user by name ", ()=>{

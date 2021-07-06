@@ -8,10 +8,11 @@ import {
     getHeaders
   } from '../support/api-headers';
   
+// Update user functionality 
+
 describe("Update user functionality",()=>{
 
 let userId;
-const newName = "U002_02 Peddana";
 const newEmail = 'randomEmail@gmail.com'
 
 it("should create user",()=>{
@@ -29,20 +30,19 @@ it("should create user",()=>{
     })
   })
 
-it('should upate the user',()=>{
-    const newName = "U002_02 Peddana";
+it('should upate the user using Patch',()=>{
 
     cy.request({url:`/users/${userId}`,
       method: "Patch",
       headers :getHeaders(),
-      body:{
-       name:newName, 
+      body:{ 
        email:newEmail
     }
       }).then(response => {
-        expect(response.body.data.name).to.equal(newName)
+        expect(response.body.data.email).to.equal(newEmail)
         expect(response.body.code).to.be.eq(200)
     });
+  cy.wait(10000)
     }) 
   
   it('Should update the created user information', () => {
@@ -54,7 +54,11 @@ it('should upate the user',()=>{
             bearer: access_token
         },
         body: {
-            email: newEmail
+           name: newUserData.name,
+           status:newUserData.status,
+           email: newEmail,
+           gender:newUserData.gender
+
         }
     }).then(response => {
         expect(response.body.data.email).to.equal(newEmail)
@@ -76,3 +80,5 @@ it('should upate the user',()=>{
   })
   
 })  
+
+

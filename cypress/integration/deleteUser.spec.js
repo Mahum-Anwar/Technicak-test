@@ -9,7 +9,6 @@ import {
   } from '../support/api-headers';
 
   // Test Delete Functionality
-  //Providing E2E so creating the user first
 
 
   describe("Delete user functionality",()=>{
@@ -41,8 +40,11 @@ it('should delete the user',()=>{
     }).then(response=>{
         expect(response.body.code).to.be.eq(204);
        })
+       cy.wait(10000)
   })
 
+
+  //   NEGATIVE test 
   //Delete the user that doesnot exists 
   
   it('should attempt to delete a nonexistent user', () => {
